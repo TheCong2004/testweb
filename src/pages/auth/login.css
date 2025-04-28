@@ -1,0 +1,67 @@
+.login-page {
+    min-height: 100vh;
+    background-color: #141414; /* Màu nền tối */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: auto;
+    padding: 2rem;
+  }
+  
+  .form.signin {
+    background: #1f1f1f;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+  }
+  
+  .inputbox {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .inputbox input {
+    width: 100%;
+    padding: 1rem;
+    background: #333;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    outline: none;
+  }
+  
+  .inputbox span {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+  }
+  
+  .inputbox i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+  }
+  
+  input[type="submit"] {
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  input[type="submit"]:hover {
+    background: #f40612;
+  }
+  
