@@ -1,28 +1,28 @@
-# Chọn image Node.js chính thức để build
+# Giai đoạn build: sử dụng Node.js để build React app
 FROM node:18 AS build
 
-# Set thư mục làm việc trong container
+# Thư mục làm việc trong container
 WORKDIR /app
 
-# Copy toàn bộ source code vào container
+# Cài dependencies
 COPY package*.json ./
 RUN npm install
 
+# Copy toàn bộ source code và build project
 COPY . .
+RUN npm run build
 
-# Build project React
-RUN npm run  build
-
-# Giai đoạn production: sử dụng Nginx để serve app
+# Giai đoạn production: dùng Nginx để serve app
 FROM nginx:alpine
 
-# Copy build từ giai đoạn trước vào Nginx public folder
+# Copy build React vào thư mục public của Nginx
 COPY --from=build /app/build /usr/share/nginx/html
 
-# Copy file cấu hình nginx nếu có
-# COPY nginx.conf /etc/nginx/nginx.conf
+# Thêm cấu hình Nginx để hỗ trợ React Router
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Mở port 80
 EXPOSE 80
 
-# Start Nginx
+# Khởi chạy Nginx
 CMD ["nginx", "-g", "daemon off;"]
